@@ -1,5 +1,23 @@
 # K4 — Level 3A, Ngày 12: Hạ Tầng Cloud & Deployment (240 phút)
 
+![CI](https://github.com/cuongwork/K4-L3A-DAY12-BuiTienCuong-2A202602539-CloudServicesAndDeployment/actions/workflows/ci.yml/badge.svg)
+
+### Bonus CI/CD
+
+Workflow `.github/workflows/ci.yml` chạy test và build Docker cho push/pull request
+vào `main`. Khi cả hai job đạt, push lên `main` sẽ deploy service `day12-agent`
+lên Railway và kiểm tra `/health`, `/ready`.
+
+Trong GitHub repo → Settings → Secrets and variables → Actions, cấu hình:
+
+- Secret `RAILWAY_TOKEN`: Railway **Project Token** của môi trường `production`.
+- Variable `RAILWAY_PROJECT_ID`: ID project Railway chứa `day12-agent`.
+- Variable `PUBLIC_URL`: `https://day12-agent-production-aa4d.up.railway.app`.
+
+Không đưa token vào git. Sau khi cấu hình, push workflow lên `main` và kiểm tra
+ba job trong tab Actions. Badge phía trên chỉ báo passing sau khi workflow chạy
+thành công trên GitHub.
+
 Đưa một AI agent từ `localhost:8000` lên một địa chỉ công khai mà người khác
 gọi được, có bảo mật, có giới hạn chi phí, và không sập khi bạn deploy bản mới.
 
